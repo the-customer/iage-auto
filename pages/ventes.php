@@ -1,0 +1,1 @@
+<h1>Page des Ventes</h1>
