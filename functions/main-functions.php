@@ -1,7 +1,8 @@
 <?php
+
     //Se connecter a la base de données
     $dbhost = 'localhost'; //l'adresse de la base de données
-    $dbname = 'iage_auto'; //le nom de la base de données
+    $dbname = 'samaauto'; //le nom de la base de données
     $dbuser = 'root'; //nom d'utilisateur
     $dbpswd = 'root';
 
@@ -22,23 +23,25 @@
     }
     
 
-    function getAllOffres(){
-        global $db;
 
+
+
+
+    //Recuperer les informations a afficher:
+    function getInfos(){
+        global $db;
         $req = $db->query("
-            SELECT * FROM offres
+            SELECT
+            *
+            FROM informations
+            WHERE etat = 1
             ");
-        $results = $req->fetchObject();
-        dd($results);
+        $results = [];
+        while($rows = $req->fetchObject()){
+            $results[] = $rows;
+        }
         return $results;
     }
-
-
-
-
-
-
-
 
 
     function printPHPErrors(){
@@ -58,31 +61,10 @@
 
 
 
-    // global $db;
-
-    // $req = $db->query("
-    //     SELECT
-    //     COUNT(idUser) as total
-    //     FROM deletedoffre
-    //     ");
-    // $results = $req->fetchObject();
-    // return $results;
 
 
 
 
-    // global $db;
-    // $req = $db->query("
-    //     SELECT
-    //     marque, COUNT(marque) as total
-    //     FROM offres
-    //     GROUP BY marque
-    //     ");
-    // $results = [];
-    // while($rows = $req->fetchObject()){
-    //     $results[] = $rows;
-    // }
-    // return $results;
 
 
 
